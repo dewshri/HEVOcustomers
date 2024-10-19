@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: customershevo
+    description: "This model aggregates customer data, including order and payment information."
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer."
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: "First name of the customer."
+        tests:
+          - not_null
+      - name: last_name
+        description: "Last name of the customer."
+        tests:
+          - not_null
+      - name: first_order
+        description: "Date of the first order."
+      - name: most_recent_order
+        description: "Date of the most recent order."
+      - name: number_of_orders
+        description: "Total number of orders made by the customer."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]  
+      - name: customer_lifetime_value
+        description: "Total sum of payments made by the customer."
+        tests:
+          - not_null
+          - customer_lifetime_value_positive:
+              column_name: "customer_lifetime_value >= 0"
