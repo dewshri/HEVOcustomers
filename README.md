@@ -65,7 +65,7 @@ This project demonstrates how to set up a data pipeline using PostgreSQL as the 
   docker cp localpathtofile your_postgres_container:/tmp/payments.csv
 
 
-- You can load above CSV files into tables craeted in PGSQL in step 3. For example:
+- You can load above CSV files into tables created in PGSQL in step 3. For example:
   ```bash
   COPY raw_orders  FROM '/tmp/orders.csv' DELIMITER ',' CSV HEADER;
   COPY raw_customers  FROM '/tmp/customers.csv' DELIMITER ',' CSV HEADER;
